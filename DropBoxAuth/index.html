@@ -83,7 +83,7 @@
       showPageSection('pre-auth-section');
       // Set the login anchors href using dbx.getAuthenticationUrl()
       var dbx = new Dropbox.Dropbox({ clientId: CLIENT_ID });
-      var authUrl = dbx.getAuthenticationUrl('https://edu.homeware.net/DropBoxAuth');
+      var authUrl = dbx.getAuthenticationUrl('https://natba.github.io/DropBoxAuth');
       console.log(authUrl);
       document.getElementById('authlink').href = authUrl;
     }
