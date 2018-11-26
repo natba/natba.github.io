@@ -1,7 +1,7 @@
 // CSD 122 Ajax Example - Nat Ballou
 $(document).ready(function(){
   $("#button1").click(function(){
-    $("#section1").load("demo_test.txt", function(responseTxt, statusTxt, xhr){
+    $("#section1").load("demo_test.html", function(responseTxt, statusTxt, xhr){
       if(statusTxt == "success")
         alert("External content loaded successfully!");
       else alert("Error: " + xhr.status + ": " + xhr.statusText);
@@ -13,9 +13,11 @@ $(document).ready(function(){
   });
 
   $("#getButton").click(function() {
-    $.get("https://natba.github.io/AjaxExample/demo_test.asp", 
+    $.get("https://natba.github.io/AjaxExample/demo_test.js", 
           function(data, status){
             $("#section2").html(data);
+	    console.log(data);
+	    console.log(status);
 	  });
     });
 
