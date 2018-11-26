@@ -4,9 +4,11 @@ $(document).ready(function(){
     $("#section1").load("demo_test.txt", function(responseTxt, statusTxt, xhr){
       if(statusTxt == "success")
         alert("External content loaded successfully!");
+      else alert("Error: " + xhr.status + ": " + xhr.statusText);
 
-        if(statusTxt == "error")
-         alert("Error: " + xhr.status + ": " + xhr.statusText);
+      console.log(responseTxt);
+      console.log(statusTxt);
+      console.log(xhr);
     });
   });
 
@@ -18,10 +20,11 @@ $(document).ready(function(){
     });
 
     $("#postButton").click(function(){
-      console.log("button2 clicked");
-      $.post("demo_test_post.asp", 
-             {name: "Donald Duck",
-              city: "Duckburg"}, 
+      $.post("https://natba.github.io/AjaxExample/demo_test_post.asp", 
+             {
+              name: "Donald Duck",
+              city: "Duckburg"
+             }, 
 	     function(data, status){
                alert("Data: " + data + "\nStatus: " + status);
              });
