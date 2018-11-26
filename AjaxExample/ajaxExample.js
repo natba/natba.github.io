@@ -22,11 +22,11 @@ $(document).ready(function(){
     });
 
     $("#postButton").click(function(){
-      $.post("demo_test_post.php", 
-             {
-              name: "Donald Duck",
-              city: "Duckburg"
-             }, 
+	    $.post("demo_test_post.php", "hello",
+		   //{
+		   //name: "Donald Duck",
+		   //city: "Duckburg"
+		   //}, 
 	     function(data, status){
                alert("Data: " + data + "\nStatus: " + status);
              });
