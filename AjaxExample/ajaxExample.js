@@ -20,7 +20,7 @@ $(document).ready(function(){
     });
 
     $("#postButton").click(function(){
-      $.post("https://natba.github.io/AjaxExample/demo_test_post.asp", 
+      $.post("demo_test_post.php", 
              {
               name: "Donald Duck",
               city: "Duckburg"
