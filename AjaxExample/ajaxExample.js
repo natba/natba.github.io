@@ -1,3 +1,4 @@
+// CSD 122 Ajax Example - Nat Ballou
 $(document).ready(function(){
   $("#button1").click(function(){
     $("#section1").load("demo_test.txt", function(responseTxt, statusTxt, xhr){
