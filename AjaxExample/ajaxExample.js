@@ -18,7 +18,7 @@ $(document).ready(function(){
 
     $("#postButton").click(function(){
       console.log("button2 clicked");
-      $.post("demo_test_post.php", 
+      $.post("demo_test_post.asp", 
              {name: "Donald Duck",
               city: "Duckburg"}, 
 	     function(data, status){
