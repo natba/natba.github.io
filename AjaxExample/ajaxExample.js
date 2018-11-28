@@ -15,6 +15,8 @@ $(document).ready(function(){
     $.get("https://natba.github.io/AjaxExample/demo_test.js", 
           function(data, status){
             $("#getSection").html(data);
+	    var db = eval(data);
+	    console.log(db);
             console.log(data);
             console.log(status);
 	  });
@@ -35,7 +37,7 @@ $(document).ready(function(){
   $("#putButton").click(function(){
     $.ajax({ url: 'demo_test.js',
              type: 'PUT',
-             data: { name: "Micky Mouse", city: "Disney" },
+             data: { name: "Batman", city: "Gotham" },
              contentType: "application/json",
              success: function(data, status) {
                         $("#putSection").html(data);
