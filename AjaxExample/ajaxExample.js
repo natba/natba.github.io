@@ -29,18 +29,4 @@ $(document).ready(function(){
              console.log(status);
            });
   });
-
-  // Ajax put example - need server permission
-  $("#putButton").click(function(){
-    $.ajax({ url: 'demo_test.js',
-             type: 'PUT',
-             data: { name: "Batman", city: "Gotham" },
-             contentType: "application/json",
-             success: function(data, status) {
-                        $("#putSection").html(data);
-                        console.log(data);
-                        console.log(status);
-                      }
-          });
-    });
 });
