@@ -32,7 +32,7 @@ $(document).ready(function(){
             }, 
            function(data, status){
              alert("Data: " + data + "\nStatus: " + status);
-	     $("#postSection").html(data);
+             $("#postSection").html(data);
            });
     });
 
@@ -40,9 +40,11 @@ $(document).ready(function(){
   $("#putButton").click(function(){
     $.ajax({ url: 'demo_test.js',
              type: 'PUT',
+             data: { name: "Micky Mouse", city: "Disney" },
+             contentType: "application/json",
              success: function(data, status) {
                         alert("Data: " + data + "\nStatus: " + status);
-	                $("#putSection").html(data);
+                        $("#putSection").html(data);
                       }
           });
     });
