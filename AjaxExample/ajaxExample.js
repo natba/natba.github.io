@@ -15,8 +15,7 @@ $(document).ready(function(){
     $.get("https://natba.github.io/AjaxExample/demo_test.js", 
           function(data, status){
             $("#getSection").html(data);
-            jQuery.globalEval(data);
-            console.log(db);
+            console.log(eval(data));
 	  });
   });
 
