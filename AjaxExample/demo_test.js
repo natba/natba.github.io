@@ -1,1 +1,1 @@
-var db = { name: "Mickey Mouse", city: "Disney" };
+var db = { name: 'Mickey Mouse', city: 'Disney' };
