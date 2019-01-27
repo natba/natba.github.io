@@ -20,7 +20,8 @@ $(document).ready(function(){
 	  });
   });
 
-  // Ajax post example - need server permission
+  // Ajax post example - need server permission to run PHP
+  // script - not available on pages.github.io
   $("#postButton").click(function(){
     $.post("demo_test_post.php", 
            { name: "Donald Duck", city: "Duckburg" }, 
