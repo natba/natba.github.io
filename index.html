@@ -166,17 +166,18 @@ header {
 }
 
 /* Watercolor-style gradient washes per destination */
-.wash-kyoto    { background: linear-gradient(135deg,#d4607a 0%,#9b4fa0 45%,#4a3070 100%); }
-.wash-morocco  { background: linear-gradient(135deg,#e8842a 0%,#c85030 50%,#7a2818 100%); }
+.wash-japan    { background: linear-gradient(135deg,#d4607a 0%,#9b4fa0 45%,#4a3070 100%); }
+.wash-australia  { background: linear-gradient(135deg,#e8842a 0%,#c85030 50%,#7a2818 100%); }
 .wash-patagonia{ background: linear-gradient(160deg,#2a5a8a 0%,#3a8a7a 50%,#6aaa6a 100%); }
-.wash-kyoto::after,
-.wash-morocco::after,
+.wash-japan::after,
+.wash-australia::after,
 .wash-patagonia::after,
 .wash-peru::after,
-.wash-iceland::after,
+.wash-newzealand::after,
 .wash-vietnam::after,
 .wash-portugal::after,
-.wash-oaxaca::after {
+.wash-camper::after,
+.wash-mexico::after {
   content: '';
   position: absolute;
   inset: 0;
@@ -187,10 +188,11 @@ header {
 }
 
 .wash-peru     { background: linear-gradient(140deg,#c8a030 0%,#8a5a18 45%,#4a2a08 100%); }
-.wash-iceland  { background: linear-gradient(150deg,#1a3050 0%,#204060 40%,#2a6878 80%,#40a088 100%); }
+.wash-newzealand  { background: linear-gradient(150deg,#1a3050 0%,#204060 40%,#2a6878 80%,#40a088 100%); }
 .wash-vietnam  { background: linear-gradient(135deg,#c83038 0%,#d86020 50%,#e8a840 100%); }
 .wash-portugal { background: linear-gradient(140deg,#3060a8 0%,#1840a0 40%,#c02828 70%,#e8c030 100%); }
-.wash-oaxaca   { background: linear-gradient(145deg,#38a058 0%,#d87820 45%,#c03828 100%); }
+.wash-mexico   { background: linear-gradient(145deg,#38a058 0%,#d87820 45%,#c03828 100%); }
+.wash-camper  { background: linear-gradient(140deg,#c83038 0%,#d86020 50%,#e8a840 100%); }
 
 /* Subtle light bleed at bottom */
 .dest-wash::before {
@@ -453,8 +455,56 @@ header          { animation: fadeUp 0.7s 0.1s ease both; }
 
     <div class="dest-grid">
 
+      <a class="dest-card" href="https://travel.homeware.net/index.php/category/camper-van-trips/" target="_blank" rel="noopener">
+        <div class="dest-wash wash-camper">
+          <div class="dest-wash-label">
+            <span class="dest-region">North America</span>
+            <span class="dest-name">USA Camper Van</span>
+          </div>
+        </div>
+        <div class="dest-body">
+          <p class="dest-note">We drive our own camper van to Bainbridge, California, Las Vegas, Phoenix, Austin, Chicago, Florida, and as many more states.</p>
+          <div class="dest-footer">
+            <span class="dest-tag">The Open Road</span>
+            <span class="dest-arrow">→</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="dest-card" href="https://travel.homeware.net/index.php/category/international/australia/" target="_blank" rel="noopener">
+        <div class="dest-wash wash-australia">
+          <div class="dest-wash-label">
+            <span class="dest-region">South Pacific</span>
+            <span class="dest-name">Australia</span>
+          </div>
+        </div>
+        <div class="dest-body">
+          <p class="dest-note">Visited Melbourne, the Outback, Cairns, and Sydney while diving on the Great Barrier Reef.</p>
+          <div class="dest-footer">
+            <span class="dest-tag">Adventure</span>
+            <span class="dest-arrow">→</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="dest-card" href="https://travel.homeware.net/index.php/category/international/newzealand/" target="_blank" rel="noopener">
+        <div class="dest-wash wash-newzealand">
+          <div class="dest-wash-label">
+            <span class="dest-region">South Pacific</span>
+            <span class="dest-name">New Zealand</span>
+          </div>
+        </div>
+        <div class="dest-body">
+          <p class="dest-note">Traveled to Queenstown, Milford Sound, Rotorua, and Auckland while experiencing ziplining, Waimangu thermals, and the Maungatautari Sanctuary Mountain.</p>
+          <div class="dest-footer">
+            <span class="dest-tag">Nature</span>
+            <span class="dest-arrow">→</span>
+          </div>
+        </div>
+      </a>
+
       <a class="dest-card" href="https://www.japan.travel/en/" target="_blank" rel="noopener">
-        <div class="dest-wash wash-kyoto">
+        <div class="dest-wash wash-japan">
           <div class="dest-wash-label">
             <span class="dest-region">East Asia</span>
             <span class="dest-name">Japan</span>
@@ -534,7 +584,7 @@ header          { animation: fadeUp 0.7s 0.1s ease both; }
       </a>
 
       <a class="dest-card" href="https://www.visitmexico.com/en" target="_blank" rel="noopener">
-        <div class="dest-wash wash-oaxaca">
+        <div class="dest-wash wash-mexico">
           <div class="dest-wash-label">
             <span class="dest-region">North America</span>
             <span class="dest-name">Mexico</span>
