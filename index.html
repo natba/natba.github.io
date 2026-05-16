@@ -1,714 +1,185 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A Life Well-Wandered — Ballou Family</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-
-/* ─── RESET & BASE ─── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-:root {
-  --paper:    #faf6ee;
-  --paper2:   #f2ece0;
-  --ink:      #1c1710;
-  --ink-mid:  #4a4030;
-  --ink-soft: #8a7a65;
-  --rust:     #b85c38;
-  --rust-lt:  #e8846a;
-  --teal:     #2d7d6e;
-  --teal-lt:  #5aada0;
-  --gold:     #c89b40;
-  --gold-lt:  #e8c070;
-  --sage:     #6b8a5e;
-  --line:     rgba(90,70,45,0.18);
-  --serif:    'Lora', Georgia, serif;
-  --body:     'Nunito', sans-serif;
-  --shadow:   0 2px 18px rgba(60,40,20,0.10);
-}
-
-html { scroll-behavior: smooth; }
-
-body {
-  background: var(--paper);
-  color: var(--ink);
-  font-family: var(--body);
-  font-size: 15px;
-  line-height: 1.7;
-}
-
-/* paper texture */
-body::before {
-  content: '';
-  position: fixed; inset: 0;
-  background-image:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-  pointer-events: none;
-  z-index: 1000;
-}
-
-/* ─── LAYOUT ─── */
-.page {
-  max-width: 860px;
-  margin: 0 auto;
-  padding: 0 2rem 4rem;
-}
-
-/* ─── HEADER ─── */
-header {
-  padding: 3.5rem 0 0;
-  text-align: center;
-  position: relative;
-}
-
-.site-eyebrow {
-  font-family: var(--body);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-  margin-bottom: 0.8rem;
-}
-
-.site-title {
-  font-family: var(--serif);
-  font-size: clamp(2.4rem, 7vw, 4.2rem);
-  font-weight: 700;
-  font-style: italic;
-  color: var(--ink);
-  line-height: 1.1;
-  margin-bottom: 0.6rem;
-  letter-spacing: -0.01em;
-}
-
-.site-subtitle {
-  font-family: var(--serif);
-  font-size: 1.05rem;
-  font-style: italic;
-  font-weight: 400;
-  color: var(--ink-soft);
-  margin-bottom: 2rem;
-}
-
-/* ─── SVG DIVIDER ─── */
-.divider {
-  display: block;
-  width: 100%;
-  max-width: 500px;
-  margin: 0 auto 2rem;
-  opacity: 0.35;
-}
-
-/* ─── SECTION HEADERS ─── */
-.section-wrap {
-  margin-bottom: 3.5rem;
-}
-
-.section-head {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1.75rem;
-}
-
-.section-head::before,
-.section-head::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: var(--line);
-}
-
-.section-label {
-  font-family: var(--serif);
-  font-size: 1.35rem;
-  font-style: italic;
-  font-weight: 600;
-  color: var(--ink-mid);
-  white-space: nowrap;
-  padding: 0 0.25rem;
-}
-
-.section-icon {
-  font-size: 1.1rem;
-  line-height: 1;
-}
-
-/* ─── DESTINATION CARDS ─── */
-.dest-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 1.1rem;
-}
-
-.dest-card {
-  position: relative;
-  border-radius: 4px;
-  overflow: hidden;
-  text-decoration: none;
-  display: block;
-  box-shadow: var(--shadow);
-  transition: transform 0.28s cubic-bezier(.34,1.4,.64,1), box-shadow 0.28s;
-}
-
-.dest-card:hover {
-  transform: translateY(-5px) rotate(0.4deg);
-  box-shadow: 0 10px 36px rgba(60,40,20,0.18);
-}
-
-.dest-wash {
-  height: 130px;
-  position: relative;
-}
-
-/* Watercolor-style gradient washes per destination */
-.wash-japan    { background: linear-gradient(135deg,#d4607a 0%,#9b4fa0 45%,#4a3070 100%); }
-.wash-australia  { background: linear-gradient(135deg,#e8842a 0%,#c85030 50%,#7a2818 100%); }
-.wash-patagonia{ background: linear-gradient(160deg,#2a5a8a 0%,#3a8a7a 50%,#6aaa6a 100%); }
-.wash-japan::after,
-.wash-australia::after,
-.wash-patagonia::after,
-.wash-peru::after,
-.wash-newzealand::after,
-.wash-vietnam::after,
-.wash-portugal::after,
-.wash-camper::after,
-.wash-mexico::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: inherit;
-  filter: blur(0px);
-  mix-blend-mode: multiply;
-  opacity: 0.25;
-}
-
-.wash-peru     { background: linear-gradient(140deg,#c8a030 0%,#8a5a18 45%,#4a2a08 100%); }
-.wash-newzealand  { background: linear-gradient(150deg,#1a3050 0%,#204060 40%,#2a6878 80%,#40a088 100%); }
-.wash-vietnam  { background: linear-gradient(135deg,#c83038 0%,#d86020 50%,#e8a840 100%); }
-.wash-portugal { background: linear-gradient(140deg,#3060a8 0%,#1840a0 40%,#c02828 70%,#e8c030 100%); }
-.wash-mexico   { background: linear-gradient(145deg,#38a058 0%,#d87820 45%,#c03828 100%); }
-.wash-camper  { background: linear-gradient(140deg,#c83038 0%,#d86020 50%,#e8a840 100%); }
-
-/* Subtle light bleed at bottom */
-.dest-wash::before {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 50%;
-  background: linear-gradient(to top, rgba(26,19,10,0.55), transparent);
-  z-index: 1;
-}
-
-/* Postage-stamp corner notch */
-.dest-wash::after {
-  content: '';
-  position: absolute;
-  top: 0; right: 0;
-  width: 0; height: 0;
-  border-style: solid;
-  border-width: 0 22px 22px 0;
-  border-color: transparent var(--paper) transparent transparent;
-  z-index: 2;
-}
-
-.dest-wash-label {
-  position: absolute;
-  bottom: 0.6rem;
-  left: 0.9rem;
-  z-index: 3;
-}
-
-.dest-region {
-  display: block;
-  font-family: var(--body);
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.7);
-  margin-bottom: 1px;
-}
-
-.dest-name {
-  display: block;
-  font-family: var(--serif);
-  font-size: 1.2rem;
-  font-weight: 700;
-  font-style: italic;
-  color: #fff;
-  line-height: 1.1;
-  text-shadow: 0 1px 6px rgba(0,0,0,0.4);
-}
-
-.dest-body {
-  background: #fff;
-  padding: 0.8rem 1rem 1rem;
-  border: 1px solid rgba(90,70,45,0.12);
-  border-top: none;
-}
-
-.dest-note {
-  font-family: var(--body);
-  font-size: 12.5px;
-  font-weight: 400;
-  color: var(--ink-mid);
-  line-height: 1.55;
-  margin-bottom: 0.6rem;
-}
-
-.dest-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.dest-tag {
-  font-family: var(--body);
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-  background: var(--paper2);
-  padding: 2px 8px;
-  border-radius: 2px;
-}
-
-.dest-arrow {
-  font-size: 13px;
-  color: var(--rust);
-  opacity: 0;
-  transform: translateX(-4px);
-  transition: opacity 0.2s, transform 0.2s;
-}
-.dest-card:hover .dest-arrow {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-/* ─── INTERESTS ─── */
-.interests-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.75rem;
-}
-
-.interest-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.9rem;
-  padding: 0.9rem 1rem;
-  background: #fff;
-  border: 1px solid rgba(90,70,45,0.1);
-  border-radius: 4px;
-  text-decoration: none;
-  color: inherit;
-  box-shadow: 0 1px 6px rgba(60,40,20,0.06);
-  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s;
-  position: relative;
-  overflow: hidden;
-}
-
-.interest-item::before {
-  content: '';
-  position: absolute;
-  left: 0; top: 0; bottom: 0;
-  width: 3px;
-  background: var(--item-accent, var(--rust));
-  transform: scaleY(0);
-  transform-origin: bottom;
-  transition: transform 0.25s cubic-bezier(.34,1.4,.64,1);
-}
-
-.interest-item:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(60,40,20,0.12);
-  border-color: rgba(90,70,45,0.2);
-}
-.interest-item:hover::before { transform: scaleY(1); }
-
-.interest-emoji {
-  font-size: 22px;
-  line-height: 1;
-  flex-shrink: 0;
-  margin-top: 2px;
-}
-
-.interest-text {}
-
-.interest-title {
-  font-family: var(--serif);
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--ink);
-  margin-bottom: 2px;
-  line-height: 1.3;
-}
-
-.interest-desc {
-  font-family: var(--body);
-  font-size: 12px;
-  font-weight: 400;
-  color: var(--ink-soft);
-  line-height: 1.45;
-}
-
-/* ─── FOOTER ─── */
-.page-footer {
-  margin-top: 4rem;
-  padding-top: 2rem;
-  border-top: 1px solid var(--line);
-  text-align: center;
-}
-
-.footer-name {
-  font-family: var(--serif);
-  font-size: 1.05rem;
-  font-style: italic;
-  color: var(--ink-mid);
-  margin-bottom: 0.5rem;
-}
-
-.footer-links {
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-  margin-bottom: 1.5rem;
-}
-
-.footer-links a {
-  font-family: var(--body);
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-  text-decoration: none;
-  transition: color 0.18s;
-}
-.footer-links a:hover { color: var(--rust); }
-
-.footer-copy {
-  font-family: var(--body);
-  font-size: 11px;
-  color: var(--ink-soft);
-  opacity: 0.6;
-}
-
-/* ─── ANIMATIONS ─── */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(22px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-header          { animation: fadeUp 0.7s 0.1s ease both; }
-.section-wrap   { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
-.section-wrap.visible { opacity: 1; transform: translateY(0); }
-
-/* ─── RESPONSIVE ─── */
-@media (max-width: 640px) {
-  .dest-grid { grid-template-columns: 1fr 1fr; }
-  .interests-grid { grid-template-columns: 1fr; }
-  .page { padding: 0 1.2rem 3rem; }
-  .site-title { font-size: 2.2rem; }
-}
-
-@media (max-width: 400px) {
-  .dest-grid { grid-template-columns: 1fr; }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ballou Family</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f7f6;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            border-bottom: 2px solid #2c3e50;
+            padding-bottom: 10px;
+        }
+        .controls {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 0 5px;
+            cursor: pointer;
+            background-color: #2980b9;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background-color: #1c5980;
+        }
+        section {
+            background: white;
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        h2 {
+	    text-align: center;
+            color: #2c3e50;
+            margin-top: 0;
+        }
+        details {
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 10px;
+        }
+        summary {
+            font-weight: bold;
+            cursor: pointer;
+            outline: none;
+        }
+        summary:hover {
+            color: #2980b9;
+        }
+        ul {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+        li {
+            margin: 5px 0;
+        }
+        a {
+            text-decoration: none;
+            color: #34495e;
+        }
+        a:hover {
+            text-decoration: underline;
+            color: #e67e22;
+        }
+    </style>
 </head>
 <body>
-<div class="page">
 
-  <!-- HEADER -->
-  <header>
-    <p class="site-eyebrow">Ballou Family — Home Page</p>
-    <h1 class="site-title">A Life Well-Wandered</h1>
-    <p class="site-subtitle">Not all who wander are lost - JRR Tolkien, The Fellowship of the Ring</p>
-    <p class="site-subtitle">Places we love &amp; things that fill our days between journeys</p>
-
-    <!-- Hand-drawn-style SVG divider -->
-    <svg class="divider" viewBox="0 0 500 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M10 12 Q60 6 120 12 Q180 18 240 12 Q300 6 360 12 Q420 18 490 12" stroke="#8a7a65" stroke-width="1.2" stroke-linecap="round" fill="none"/>
-      <circle cx="250" cy="12" r="4" fill="none" stroke="#8a7a65" stroke-width="1.2"/>
-      <path d="M220 12 L233 12" stroke="#8a7a65" stroke-width="1.2" stroke-linecap="round"/>
-      <path d="M267 12 L280 12" stroke="#8a7a65" stroke-width="1.2" stroke-linecap="round"/>
-      <circle cx="80" cy="12" r="2" fill="#8a7a65" opacity="0.5"/>
-      <circle cx="420" cy="12" r="2" fill="#8a7a65" opacity="0.5"/>
-    </svg>
-  </header>
-
-  <!-- ── DESTINATIONS ── -->
-  <section class="section-wrap" id="destinations">
-    <div class="section-head">
-      <span class="section-icon">✈</span>
-      <span class="section-label">Travel Destinations</span>
-      <span class="section-icon">🗺</span>
+    <h1>Ballou Family</h1>
+<!--
+    <h2>Places we love & things that fill our days between journeys</h2>
+    <h2>A Life Well-Wandered</h2>
+    <h2>Not all who wander are lost - JRR Tolkein - The Fellowship of the Ring</h2>
+-->
+    <div class="controls">
+        <button onclick="toggleAll(true)">Expand All</button>
+        <button onclick="toggleAll(false)">Collapse All</button>
     </div>
 
-    <div class="dest-grid">
+    <!-- TRAVEL SECTION -->
+    <section id="travel">
+        <h2>🌍 Travel Destinations</h2>
+        
+        <details>
+            <summary>North America</summary>
+            <ul>
+                <li><a href="https://travel.homeware.net/index.php/2022/09/13/finding-modrates-in-merica/" target="_blank">2022-09 Camper Van</a></li>
+                <li><a href="https://travel.homeware.net/index.php/2023/03/23/landcruise-episode-9-san-antonio-to-savanah/" target="_blank">2023-03 Camper Van</a></li>
+            </ul>
+        </details>
 
-      <a class="dest-card" href="https://travel.homeware.net/index.php/category/camper-van-trips/" target="_blank" rel="noopener">
-        <div class="dest-wash wash-camper">
-          <div class="dest-wash-label">
-            <span class="dest-region">North America</span>
-            <span class="dest-name">USA Camper Van</span>
-          </div>
-        </div>
-        <div class="dest-body">
-          <p class="dest-note">We drive our own camper van to Bainbridge, California, Las Vegas, Phoenix, Austin, Chicago, Florida, and as many more states.</p>
-          <div class="dest-footer">
-            <span class="dest-tag">The Open Road</span>
-            <span class="dest-arrow">→</span>
-          </div>
-        </div>
-      </a>
+        <details>
+            <summary>South Pacific</summary>
+            <ul>
+                <li><a href="https://travel.homeware.net/index.php/2024/01/26/down-under-1-melbourne/" target="_blank">2024-01 Australia</a></li>
+                <li><a href="https://travel.homeware.net/index.php/2024/03/05/down-under-9-christchurch/" target="_blank">2024-02 New Zealand</a></li>
+            </ul>
+        </details>
 
-      <a class="dest-card" href="https://travel.homeware.net/index.php/category/international/australia/" target="_blank" rel="noopener">
-        <div class="dest-wash wash-australia">
-          <div class="dest-wash-label">
-            <span class="dest-region">South Pacific</span>
-            <span class="dest-name">Australia</span>
-          </div>
-        </div>
-        <div class="dest-body">
-          <p class="dest-note">Visited Melbourne, the Outback, Cairns, and Sydney while diving on the Great Barrier Reef.</p>
-          <div class="dest-footer">
-            <span class="dest-tag">Adventure</span>
-            <span class="dest-arrow">→</span>
-          </div>
-        </div>
-      </a>
+        <details>
+            <summary>Europe</summary>
+            <ul>
+                <li><a href="travel/2022-04-Portugal.html" target="_blank">2022-04 Portugal</a></li>
+            </ul>
+        </details>
 
-      <a class="dest-card" href="https://travel.homeware.net/index.php/category/international/newzealand/" target="_blank" rel="noopener">
-        <div class="dest-wash wash-newzealand">
-          <div class="dest-wash-label">
-            <span class="dest-region">South Pacific</span>
-            <span class="dest-name">New Zealand</span>
-          </div>
-        </div>
-        <div class="dest-body">
-          <p class="dest-note">Traveled to Queenstown, Milford Sound, Rotorua, and Auckland while experiencing ziplining, Waimangu thermals, and the Maungatautari Sanctuary Mountain.</p>
-          <div class="dest-footer">
-            <span class="dest-tag">Nature</span>
-            <span class="dest-arrow">→</span>
-          </div>
-        </div>
-      </a>
+<!--
+        <details>
+            <summary>Central America</summary>
+            <ul>
+                <li><a href="https://www.visitcostarica.com" target="_blank">Visit Costa Rica</a></li>
+                <li><a href="https://www.visitpanama.com" target="_blank">Visit Panama</a></li>
+            </ul>
+        </details>
 
-      <a class="dest-card" href="https://www.japan.travel/en/" target="_blank" rel="noopener">
-        <div class="dest-wash wash-japan">
-          <div class="dest-wash-label">
-            <span class="dest-region">East Asia</span>
-            <span class="dest-name">Japan</span>
-          </div>
-        </div>
-        <div class="dest-body">
-          <p class="dest-note">Ancient temples, bamboo groves, and the quiet dignity of a city that moves slowly on purpose.</p>
-          <div class="dest-footer">
-            <span class="dest-tag">Culture</span>
-            <span class="dest-arrow">→</span>
-          </div>
-        </div>
-      </a>
+        <details>
+            <summary>Southeast Asia</summary>
+            <ul>
+                <li><a href="https://www.tourismthailand.org" target="_blank">Amazing Thailand</a></li>
+                <li><a href="https://www.visitsingapore.com" target="_blank">Visit Singapore</a></li>
+            </ul>
+        </details>
+-->
+	
+    </section>
 
-      <a class="dest-card" href="https://www.argentina.travel/en" target="_blank" rel="noopener">
-        <div class="dest-wash wash-patagonia">
-          <div class="dest-wash-label">
-            <span class="dest-region">South America</span>
-            <span class="dest-name">Patagonia</span>
-          </div>
-        </div>
-        <div class="dest-body">
-          <p class="dest-note">The end of the world, reachable by those willing to walk. Glaciers, condors, and impossible silence.</p>
-          <div class="dest-footer">
-            <span class="dest-tag">Trekking</span>
-            <span class="dest-arrow">→</span>
-          </div>
-        </div>
-      </a>
+    <!-- Other Interest -->
+    <section id="hobbies">
+        <h2>🎨 Beyond Travel</h2>
 
-      <a class="dest-card" href="https://www.peru.travel/en" target="_blank" rel="noopener">
-        <div class="dest-wash wash-peru">
-          <div class="dest-wash-label">
-            <span class="dest-region">South America</span>
-            <span class="dest-name">Peru</span>
-          </div>
-        </div>
-        <div class="dest-body">
-          <p class="dest-note">Inca stonework fitted without mortar, Sacred Valley markets, and the amazing journey to Machu Picchu.</p>
-          <div class="dest-footer">
-            <span class="dest-tag">History</span>
-            <span class="dest-arrow">→</span>
-          </div>
-        </div>
-      </a>
+        <details>
+            <summary>Technology</summary>
+            <ul>
+                <li><a href="other/pente.html" target="_blank">Pente</a></li>
+                <li><a href="media/Barney_Tour1.mov" target="_blank">Barney</a></li>
+            </ul>
+        </details>
+<!--
+        <details>
+            <summary>Restaurants</summary>
+            <ul>
+                <li><a href="https://www.eater.com" target="_blank">Eater</a></li>
+                <li><a href="https://www.yelp.com" target="_blank">Yelp</a></li>
+            </ul>
+        </details>
 
-      <a class="dest-card" href="https://vietnam.travel" target="_blank" rel="noopener">
-        <div class="dest-wash wash-vietnam">
-          <div class="dest-wash-label">
-            <span class="dest-region">Southeast Asia</span>
-            <span class="dest-name">Vietnam</span>
-          </div>
-        </div>
-        <div class="dest-body">
-          <p class="dest-note">From Hanoi to Hội An to Saigon, we found the perfect bánh mì and motorbikes down streets that time forgot.</p>
-          <div class="dest-footer">
-            <span class="dest-tag">Food</span>
-            <span class="dest-arrow">→</span>
-          </div>
-        </div>
-      </a>
+        <details>
+            <summary>Movies</summary>
+            <ul>
+                <li><a href="https://www.imdb.com" target="_blank">IMDb</a></li>
+                <li><a href="https://www.rottentomatoes.com" target="_blank">Rotten Tomatoes</a></li>
+            </ul>
+        </details>
+-->
+    </section>
 
-      <a class="dest-card" href="https://www.visitportugal.com/en" target="_blank" rel="noopener">
-        <div class="dest-wash wash-portugal">
-          <div class="dest-wash-label">
-            <span class="dest-region">Southern Europe</span>
-            <span class="dest-name">Portugal</span>
-          </div>
-        </div>
-        <div class="dest-body">
-          <p class="dest-note">Seven hills, azulejo tiles, and fado drifting up from a cellar on a warm September evening.</p>
-          <div class="dest-footer">
-            <span class="dest-tag">City Life</span>
-            <span class="dest-arrow">→</span>
-          </div>
-        </div>
-      </a>
+    <script>
+        // Function to expand or collapse all <details> elements
+        function toggleAll(isOpen) {
+            const allDetails = document.querySelectorAll('details');
+            allDetails.forEach(detail => {
+                detail.open = isOpen;
+            });
+        }
+    </script>
 
-      <a class="dest-card" href="https://www.visitmexico.com/en" target="_blank" rel="noopener">
-        <div class="dest-wash wash-mexico">
-          <div class="dest-wash-label">
-            <span class="dest-region">North America</span>
-            <span class="dest-name">Mexico</span>
-          </div>
-        </div>
-        <div class="dest-body">
-          <p class="dest-note">Mole negro, mezcal distilleries, weaving co-ops, and mountains wrapped in clouds above the valley.</p>
-          <div class="dest-footer">
-            <span class="dest-tag">Cuisine</span>
-            <span class="dest-arrow">→</span>
-          </div>
-        </div>
-      </a>
-
-    </div>
-  </section>
-
-  <!-- Divider -->
-  <svg viewBox="0 0 860 20" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;margin:0.5rem 0 2rem;opacity:0.2;" aria-hidden="true">
-    <line x1="0" y1="10" x2="860" y2="10" stroke="#8a7a65" stroke-width="1" stroke-dasharray="4 6"/>
-  </svg>
-
-  <!-- ── INTERESTS ── -->
-  <section class="section-wrap" id="interests">
-    <div class="section-head">
-      <span class="section-icon">✦</span>
-      <span class="section-label">Beyond Travel</span>
-      <span class="section-icon">✦</span>
-    </div>
-
-    <div class="interests-grid">
-
-      <a class="interest-item" href="https://www.goodreads.com" target="_blank" rel="noopener" style="--item-accent: #b85c38;">
-        <span class="interest-emoji">📚</span>
-        <div class="interest-text">
-          <div class="interest-title">Reading &amp; Literature</div>
-          <div class="interest-desc">Novels in translation, long-form essays, and anything about how people actually live.</div>
-        </div>
-      </a>
-
-      <a class="interest-item" href="https://www.flickr.com" target="_blank" rel="noopener" style="--item-accent: #2d7d6e;">
-        <span class="interest-emoji">📷</span>
-        <div class="interest-text">
-          <div class="interest-title">Film Photography</div>
-          <div class="interest-desc">35mm black-and-white. The discipline of 36 exposures per roll changes how you see.</div>
-        </div>
-      </a>
-
-      <a class="interest-item" href="https://www.seriouseats.com" target="_blank" rel="noopener" style="--item-accent: #c89b40;">
-        <span class="interest-emoji">🍳</span>
-        <div class="interest-text">
-          <div class="interest-title">Cooking &amp; Fermentation</div>
-          <div class="interest-desc">Sourdough, kimchi, hand-rolled pasta, and recipes that require patience.</div>
-        </div>
-      </a>
-
-      <a class="interest-item" href="https://www.alltrails.com" target="_blank" rel="noopener" style="--item-accent: #6b8a5e;">
-        <span class="interest-emoji">🥾</span>
-        <div class="interest-text">
-          <div class="interest-title">Hiking &amp; Trail Running</div>
-          <div class="interest-desc">Long-distance routes, mountain ridgelines, and the honest simplicity of putting one foot forward.</div>
-        </div>
-      </a>
-
-      <a class="interest-item" href="https://open.spotify.com" target="_blank" rel="noopener" style="--item-accent: #7a5080;">
-        <span class="interest-emoji">🎵</span>
-        <div class="interest-text">
-          <div class="interest-title">Music &amp; Vinyl</div>
-          <div class="interest-desc">Jazz, folk, and world music. Records collected from markets in a dozen countries.</div>
-        </div>
-      </a>
-
-      <a class="interest-item" href="https://letterboxd.com" target="_blank" rel="noopener" style="--item-accent: #4a6878;">
-        <span class="interest-emoji">🎬</span>
-        <div class="interest-text">
-          <div class="interest-title">Cinema</div>
-          <div class="interest-desc">World cinema, documentaries, and films that make a place feel real before you arrive.</div>
-        </div>
-      </a>
-
-      <a class="interest-item" href="https://www.rhs.org.uk" target="_blank" rel="noopener" style="--item-accent: #a8c820;">
-        <span class="interest-emoji">🌿</span>
-        <div class="interest-text">
-          <div class="interest-title">Gardening</div>
-          <div class="interest-desc">A small kitchen garden, native plants, and learning which herbs survive neglect.</div>
-        </div>
-      </a>
-
-      <a class="interest-item" href="https://www.are.na" target="_blank" rel="noopener" style="--item-accent: #c87030;">
-        <span class="interest-emoji">✏️</span>
-        <div class="interest-text">
-          <div class="interest-title">Sketching &amp; Journaling</div>
-          <div class="interest-desc">Travel notebooks filled with watercolor thumbnails, bad maps, and half-remembered conversations.</div>
-        </div>
-      </a>
-
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="page-footer">
-    <p class="footer-name">Ballou Family — somewhere between here and the next horizon</p>
-    <div class="footer-links">
-      <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
-      <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://medium.com" target="_blank" rel="noopener">Writing</a>
-      <a href="mailto:natba@hotmail.com">Email</a>
-    </div>
-    <p class="footer-copy">© 2026 Nat Ballou · Made with curiosity &amp; AI</p>
-  </footer>
-
-</div><!-- /page -->
-
-<script>
-  const sections = document.querySelectorAll('.section-wrap');
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        obs.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.08 });
-  sections.forEach(s => obs.observe(s));
-</script>
 </body>
 </html>
